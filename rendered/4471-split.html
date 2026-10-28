@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en"><head><!--1etxu8d--><!----><title>#4471 · one ticket, three problems · support kb</title>
+		<style data-sveltekit>
+  :root {
+    --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --line: #e3e0d8;
+    --accent: #2f6f5e; --warn: #b4501f; --warn-bg: #fbeee6; --note-bg: #eef5f2;
+    --mono: ui-monospace, 'Cascadia Code', Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #171716; --fg: #ecebe6; --muted: #9c9a93; --line: #34332f;
+      --accent: #6fbfa6; --warn: #f0905d; --warn-bg: #3a2418; --note-bg: #1d2c27;
+    }
+  }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, sans-serif; }
+  .kb table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92rem; }
+  .kb th, .kb td { border-bottom: 1px solid var(--line); padding: 0.35rem 0.5rem; text-align: left; }
+  .kb code { font-family: var(--mono); font-size: 0.88em; }
+  .kb a { color: var(--accent); }
+  .kb.s-Qwa20ebQEldI { max-width: 760px; margin: 0 auto; padding: 2rem 16px 4rem; }
+  .crumb.s-Qwa20ebQEldI { font: 0.8rem var(--mono); text-decoration: none; color: var(--muted); }
+  h1.s-Qwa20ebQEldI { margin: 0.25rem 0 0.5rem; line-height: 1.2; }
+  .meta.s-Qwa20ebQEldI { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .status.s-Qwa20ebQEldI { border: 1px solid var(--line); border-radius: 99px; padding: 0 0.6rem; }
+  .stale.s-Qwa20ebQEldI { color: var(--warn); font-weight: 600; }
+  .banner.s-Qwa20ebQEldI { background: var(--warn-bg); color: var(--warn); padding: 0.6rem 1rem; border-radius: 6px; }
+  footer.s-Qwa20ebQEldI { margin-top: 3rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+ .s-Qwa20ebQEldI{}
+
+  .sum.s-u3Uxny0FTspK { font-size: 1.1rem; }
+  .tags.s-u3Uxny0FTspK { color: var(--muted); font-size: 0.85em; }
+  .note.s-u3Uxny0FTspK { color: var(--muted); font-size: 0.85em; }
+  .wrong.s-u3Uxny0FTspK td:where(.s-u3Uxny0FTspK) { background: var(--warn-bg); }
+  .wrong.s-u3Uxny0FTspK td:where(.s-u3Uxny0FTspK):last-child { color: var(--warn); font-weight: 600; }
+ .s-u3Uxny0FTspK{}
+
+  aside.s-bHkMsCS4O-Aw { border-left: 4px solid var(--accent); padding: 0.5rem 1rem; margin: 1rem 0; background: var(--note-bg); }
+  aside.warn.s-bHkMsCS4O-Aw { border-color: var(--warn); background: var(--warn-bg); }
+ .s-bHkMsCS4O-Aw{}
+
+  .stamp.s-pCpJia49AWET { margin: 2rem 0 0; font: 0.85rem var(--mono); color: var(--muted); }
+  .stamp.s-pCpJia49AWET b:where(.s-pCpJia49AWET) { color: var(--accent); letter-spacing: 0.04em; }
+  .missing.s-pCpJia49AWET { color: var(--warn); }
+ .s-pCpJia49AWET{}</style></head><body><!--[--><!--[0--><!--[--><!--[--><div class="kb s-Qwa20ebQEldI"><header class="s-Qwa20ebQEldI"><a class="crumb s-Qwa20ebQEldI" href="/kb">support desk · kb</a> <h1 class="s-Qwa20ebQEldI">#4471 · one ticket, three problems</h1> <p class="meta s-Qwa20ebQEldI"><span class="s-Qwa20ebQEldI">owner <b class="s-Qwa20ebQEldI">support desk</b></span> <span class="status living s-Qwa20ebQEldI">living</span> <span class="s-Qwa20ebQEldI">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main class="s-Qwa20ebQEldI"><p><a href="/kb/incidents/4471">#4471</a> was marked known as one issue with one fix queued. That is
+only true for the biggest part of it. Read per report, with the tenant’s locale and booking
+form beside it, the 412 reports hold three problems.</p> <p><strong>412</strong> reports in #4471, <strong>3</strong> problems.</p> <table><thead><tr><th>problem</th><th>reports</th></tr></thead><tbody><!--[--><tr><td>Parser reads dates month first</td><td>374</td></tr><tr><td>Booking-v3 form hints MM/DD/YYYY</td><td>33</td></tr><tr><td>One-day shift (cause not yet found)</td><td>5</td></tr><!--]--></tbody><tfoot><tr><td>total</td><td>412</td></tr></tfoot></table><!----> <h2>Why one ticket was wrong</h2> <p><a href="/kb/decisions/0001-dedupe-by-subject">Decision 0001</a> merges on the subject line. Twelve
+different subjects all say “wrong day”, so everything about dates landed in one ticket. The
+subject says what the reporter felt. It does not say what broke.</p> <p>The cause depends on the tenant, not on what intake guessed from the reporter’s browser. The
+table below groups the same reports by the cause the desk can work out
+(<code>src/lib/kb/causes.ts</code>). The <code>tagged as</code> column shows how often intake’s guess differs.</p> <p class="sum s-u3Uxny0FTspK"><strong class="s-u3Uxny0FTspK">412</strong> reports merged into #4471 · <strong class="s-u3Uxny0FTspK">2</strong> causes</p> <table class="s-u3Uxny0FTspK"><thead class="s-u3Uxny0FTspK"><tr class="s-u3Uxny0FTspK"><th class="s-u3Uxny0FTspK">cause</th><th class="s-u3Uxny0FTspK">reports</th><th class="s-u3Uxny0FTspK">tagged as</th><th class="s-u3Uxny0FTspK">tenants</th><th class="s-u3Uxny0FTspK">seen</th><th class="s-u3Uxny0FTspK"></th></tr></thead><tbody class="s-u3Uxny0FTspK"><!--[--><tr class="s-u3Uxny0FTspK"><td class="s-u3Uxny0FTspK"><code class="s-u3Uxny0FTspK">parser</code></td><td class="s-u3Uxny0FTspK">379</td><td class="tags s-u3Uxny0FTspK">parser ×356 · hint ×23</td><td class="s-u3Uxny0FTspK">11</td><td class="s-u3Uxny0FTspK">2026-04-01 → 2026-10-04</td><td class="s-u3Uxny0FTspK">#4471</td></tr><tr class="s-u3Uxny0FTspK wrong"><td class="s-u3Uxny0FTspK"><code class="s-u3Uxny0FTspK">hint</code></td><td class="s-u3Uxny0FTspK">33</td><td class="tags s-u3Uxny0FTspK">hint ×18 · parser ×15</td><td class="s-u3Uxny0FTspK">3</td><td class="s-u3Uxny0FTspK">2026-04-17 → 2026-09-22</td><td class="s-u3Uxny0FTspK">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note s-u3Uxny0FTspK">5 reports read as a one-day move; filed under <code class="s-u3Uxny0FTspK">parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <h2>The three problems</h2> <ol><li><strong>Parser reads month first.</strong> The shared parser reads every date month first, so every
+day-first tenant gets a flipped month and day. The queued fix covers this one.</li> <li><strong>Booking-v3 hint.</strong> Tenants on the booking-v3 form print <code>MM/DD/YYYY</code> under the date
+field, so their people type month first through the form. This is a different bug with
+a different fix: the form, not the parser. The queued fix does not cover it.</li> <li><strong>One-day shift.</strong> A few reports describe a date that is one day off, not a month flip: June
+only, an invite that arrived before the booking, and one meeting held twice across time
+zones. A flip cannot explain these. No cause is known yet; time zones are a lead.</li></ol> <aside class="note s-bHkMsCS4O-Aw"><!---->Known is true for the first problem only. The other two have no ticket of their own until
+they are filed apart.<!----></aside><!----> <h2>Lessons</h2> <ul><li>Merging on subject counts a feeling once. Count a cause once.</li> <li>Look the tenant up before you merge. Intake’s tag is a guess.</li> <li>Do not edit an accepted decision. Write a new record that replaces 0001.</li></ul> <!--[0--><p class="stamp s-pCpJia49AWET">desk ref <b class="s-pCpJia49AWET">DR-V3ZN-R35R</b></p><!--]--><!----><!----></main> <footer class="s-Qwa20ebQEldI">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!----><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			
+		</body></html>

@@ -1,0 +1,57 @@
+---
+layout: runbook
+title: '#4471 · one ticket, three problems'
+owner: support desk
+status: living
+reviewed: 2026-10-28
+signature: 'v1.eyJzdWIiOiIzNTk2IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMxOTQ1MzMsImV4cCI6MTc5MzI4MDkzM30.r4M2KaFLU4LYX_wUhCmzKflhM1-wFj_ZxR55INorDqI'
+---
+
+<script>
+  import SplitCounts from '#lib/kb/SplitCounts.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) was marked known as one issue with one fix queued. That is
+only true for the biggest part of it. Read per report, with the tenant's locale and booking
+form beside it, the 412 reports hold three problems.
+
+<SplitCounts ticket={4471} />
+
+## Why one ticket was wrong
+
+[Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on the subject line. Twelve
+different subjects all say "wrong day", so everything about dates landed in one ticket. The
+subject says what the reporter felt. It does not say what broke.
+
+The cause depends on the tenant, not on what intake guessed from the reporter's browser. The
+table below groups the same reports by the cause the desk can work out
+(`src/lib/kb/causes.ts`). The `tagged as` column shows how often intake's guess differs.
+
+<CauseTable ticket={4471} />
+
+## The three problems
+
+1. **Parser reads month first.** The shared parser reads every date month first, so every
+   day-first tenant gets a flipped month and day. The queued fix covers this one.
+2. **Booking-v3 hint.** Tenants on the booking-v3 form print `MM/DD/YYYY` under the date
+   field, so their people type month first through the form. This is a different bug with
+   a different fix: the form, not the parser. The queued fix does not cover it.
+3. **One-day shift.** A few reports describe a date that is one day off, not a month flip: June
+   only, an invite that arrived before the booking, and one meeting held twice across time
+   zones. A flip cannot explain these. No cause is known yet; time zones are a lead.
+
+<Callout>
+Known is true for the first problem only. The other two have no ticket of their own until
+they are filed apart.
+</Callout>
+
+## Lessons
+
+- Merging on subject counts a feeling once. Count a cause once.
+- Look the tenant up before you merge. Intake's tag is a guess.
+- Do not edit an accepted decision. Write a new record that replaces 0001.
+
+<RenderStamp {signature} />
