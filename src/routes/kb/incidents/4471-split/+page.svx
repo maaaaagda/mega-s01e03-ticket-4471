@@ -39,7 +39,7 @@ table below groups the same reports by the cause the desk can work out
 2. **Booking-v3 hint.** Tenants on the booking-v3 form print `MM/DD/YYYY` under the date
    field, so their people type month first through the form. This is a different bug with
    a different fix: the form, not the parser. The queued fix does not cover it.
-3. **One-day shift.** A few reports describe a date that is one day off, not a month flip: June
+3. **One-day shift.** A few reports (already counted under the parser, where their tenant files them) describe a date that is one day off, not a month flip: June
    only, an invite that arrived before the booking, and one meeting held twice across time
    zones. A flip cannot explain these. No cause is known yet; time zones are a lead.
 
