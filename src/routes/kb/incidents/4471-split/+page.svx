@@ -48,6 +48,12 @@ Known is true for the first problem only. The other two have no ticket of their 
 they are filed apart.
 </Callout>
 
+## Outcome
+
+Engineering closed #4471 on 5 October. The parser problem is fixed (`fix(dates): parse dd/mm for eu
+locales`). The hint problem is won't fix, because the booking-v3 form is retired. The one-day
+reports sit inside the parser count and stay unexplained.
+
 ## Lessons
 
 - Merging on subject counts a feeling once. Count a cause once.
